@@ -1,3 +1,13 @@
+<a name="1.2.1"></a>
+## [1.2.1](https://github.com/tomchentw/reacthtmlpack/compare/v1.2.0...v1.2.1) (2016-01-23)
+
+
+### Bug Fixes
+
+* **core:** detects cjsModule.exports.__esModule ([756dd5b](https://github.com/tomchentw/reacthtmlpack/commit/756dd5b))
+
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/tomchentw/reacthtmlpack/compare/v1.1.0...v1.2.0) (2015-10-12)
 
