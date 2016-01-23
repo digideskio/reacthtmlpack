@@ -6,7 +6,7 @@ import type { CodeFile } from "./babel";
 
 export function evaluateAsES2015Module (code: string, filepath: string) : any {
   const cjsModule = evaluateAsModule(code, filepath);
-  if (cjsModule.exports && cjsModule.__esModule) {
+  if (cjsModule.exports && cjsModule.exports.__esModule) {
     return cjsModule.exports;
   } else {
     return {
