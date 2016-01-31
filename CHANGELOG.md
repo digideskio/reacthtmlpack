@@ -1,3 +1,13 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/tomchentw/reacthtmlpack/compare/v1.2.1...v2.0.0) (2016-01-31)
+
+
+### Features
+
+* **src:** completely rewrite to accept *.html as template file ([5108441](https://github.com/tomchentw/reacthtmlpack/commit/5108441)), closes [#19](https://github.com/tomchentw/reacthtmlpack/issues/19) [#5](https://github.com/tomchentw/reacthtmlpack/issues/5)
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/tomchentw/reacthtmlpack/compare/v1.2.0...v1.2.1) (2016-01-23)
 
