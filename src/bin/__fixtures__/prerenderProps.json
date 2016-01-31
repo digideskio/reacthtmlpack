@@ -1,0 +1,10 @@
+[
+  {
+    "location": "/",
+    "basename": "/"
+  },
+  {
+    "location": "/about/",
+    "basename": "/"
+  }
+]

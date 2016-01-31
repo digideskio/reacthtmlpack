@@ -1,7 +1,3 @@
 examples/**
 lib/**
 public/**
-**/__tests__/**
-**/__utils__/**
-**/__mocks__/**
-**/__fixtures__/**
