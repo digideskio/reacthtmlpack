@@ -1,3 +1,13 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/tomchentw/reacthtmlpack/compare/v2.0.0...v2.0.1) (2016-01-31)
+
+
+### Bug Fixes
+
+* **babel:** use preset from "babel-preset-syntax-from-presets" ([e9583a0](https://github.com/tomchentw/reacthtmlpack/commit/e9583a0))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/tomchentw/reacthtmlpack/compare/v1.2.1...v2.0.0) (2016-01-31)
 
