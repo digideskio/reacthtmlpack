@@ -1,3 +1,13 @@
+<a name="2.0.2"></a>
+## [2.0.2](https://github.com/tomchentw/reacthtmlpack/compare/v2.0.1...v2.0.2) (2016-02-02)
+
+
+### Bug Fixes
+
+* **webpack:** webpackExternalsResolver should work with loader request ([5566627](https://github.com/tomchentw/reacthtmlpack/commit/5566627))
+
+
+
 <a name="2.0.1"></a>
 ## [2.0.1](https://github.com/tomchentw/reacthtmlpack/compare/v2.0.0...v2.0.1) (2016-01-31)
 
