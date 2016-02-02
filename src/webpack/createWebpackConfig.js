@@ -18,6 +18,10 @@ import {
 } from "invariant";
 
 import {
+  default as _,
+} from "lodash";
+
+import {
   default as ExtractTextPlugin,
 } from "extract-text-webpack-plugin";
 
@@ -109,6 +113,21 @@ export function createClientWebpackConfig(customConfig: Object) {
   };
 }
 
+function requestToCommonJSModule(request: string): string {
+  // -!./../../node_modules/css-loader/index.js!flexboxgrid
+  // flexboxgrid
+  //
+  // sep as pathSep,
+  // const [potentialModuleName] = request.split(pathSep);
+  //
+  let moduleName: string = request;
+  if (request.match(/!/)) {
+    moduleName = _.last(request.split(`!`));
+  }
+  // FIXME: Assume everything can be found in node_modules
+  return `commonjs ${ moduleName }`;
+}
+
 export function webpackExternalsResolver(context, request, done) {
   // https://github.com/webpack/webpack/issues/839#issuecomment-76736465
   if (isAbsolutePath(request)) {
@@ -118,10 +137,7 @@ export function webpackExternalsResolver(context, request, done) {
   } else if (request.match(/\.css$/)) {
     done();
   } else {
-    // sep as pathSep,
-    // const [potentialModuleName] = request.split(pathSep);
-    // FIXME: Assume everything can be found in node_modules
-    done(null, `commonjs ${ request }`);
+    done(null, requestToCommonJSModule(request));
   }
 }
 
