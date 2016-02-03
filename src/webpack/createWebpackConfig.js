@@ -101,7 +101,7 @@ export function createClientWebpackConfig(customConfig: Object) {
         },
         {
           test: /\.css$/,
-          loader: clientExtractTextPlugin.extract(`style`, `css`),
+          loader: clientExtractTextPlugin.extract(`style`, `css?module`),
         },
       ],
     },
@@ -159,7 +159,7 @@ export function createServerWebpackConfig(customConfig: Object) {
         ...baseConfig.module.loaders,
         {
           test: /\.css$/,
-          loader: serverExtractTextPlugin.extract(`css`),
+          loader: serverExtractTextPlugin.extract(`css?module`),
         },
       ],
     },
