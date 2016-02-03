@@ -42,5 +42,13 @@ describe(`transformRelativePath`, function describeTransformRelativePath() {
         expect(code).toEqual(`import * as p from "../node";`);
       });
     });
+
+    context(`with webpack loader request`, function contextWithWebpackLoaderRequest() {
+      xit(`will transform`, function it() {
+        const code = transformRelativePath(`import theme from "css?module!./Root";`, [
+        ]);
+        expect(code).toEqual(`import theme from "css?module!../Root";`);
+      });
+    });
   });
 });
