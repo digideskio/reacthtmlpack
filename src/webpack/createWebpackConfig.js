@@ -125,19 +125,30 @@ function requestToCommonJSModule(request: string): string {
     moduleName = _.last(request.split(`!`));
   }
   // FIXME: Assume everything can be found in node_modules
-  return `commonjs ${ moduleName }`;
+  return require.resolve(moduleName);
 }
+
+const CSS_REGEX = /\.css$/;
 
 export function webpackExternalsResolver(context, request, done) {
   // https://github.com/webpack/webpack/issues/839#issuecomment-76736465
   if (isAbsolutePath(request)) {
     done();
-  } else if (request.match(/^\./)) {
+  } else if (/^\./.test(request)) {
     done();
-  } else if (request.match(/\.css$/)) {
+  } else if (CSS_REGEX.test(request)) {
     done();
   } else {
-    done(null, requestToCommonJSModule(request));
+    try {
+      const moduleName = requestToCommonJSModule(request);
+      if (CSS_REGEX.test(moduleName)) {
+        done(); // Because we use css-modules by default
+      } else {
+        done(null, moduleName); // Make it external.
+      }
+    } catch (e) {
+      done(e);
+    }
   }
 }
 
