@@ -113,7 +113,9 @@ export function createClientWebpackConfig(customConfig: Object) {
   };
 }
 
-function requestToCommonJSModule(request: string): string {
+const CSS_REGEX = /\.css$/;
+
+function requestToCommonJSModule(request: string): Object {
   // -!./../../node_modules/css-loader/index.js!flexboxgrid
   // flexboxgrid
   //
@@ -124,11 +126,25 @@ function requestToCommonJSModule(request: string): string {
   if (request.match(/!/)) {
     moduleName = _.last(request.split(`!`));
   }
-  // FIXME: Assume everything can be found in node_modules
-  return require.resolve(moduleName);
+  try {
+    // FIXME: Assume everything can be found in node_modules
+    const absPath = require.resolve(moduleName);
+    if (CSS_REGEX.test(absPath)) {
+      return { // Because we use css-modules by default
+        isExternal: false,
+        moduleName: null,
+      };
+    }
+  } catch (e) {
+    // DO nothing
+  }
+  // Make it external.
+  return {
+    isExternal: true,
+    moduleName: `commonjs ${ moduleName }`,
+  };
 }
 
-const CSS_REGEX = /\.css$/;
 
 export function webpackExternalsResolver(context, request, done) {
   // https://github.com/webpack/webpack/issues/839#issuecomment-76736465
@@ -139,15 +155,11 @@ export function webpackExternalsResolver(context, request, done) {
   } else if (CSS_REGEX.test(request)) {
     done();
   } else {
-    try {
-      const moduleName = requestToCommonJSModule(request);
-      if (CSS_REGEX.test(moduleName)) {
-        done(); // Because we use css-modules by default
-      } else {
-        done(null, moduleName); // Make it external.
-      }
-    } catch (e) {
-      done(e);
+    const { isExternal, moduleName } = requestToCommonJSModule(request);
+    if (isExternal) {
+      done(null, moduleName);
+    } else {
+      done();
     }
   }
 }

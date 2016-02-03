@@ -20,17 +20,17 @@ describe(`createWebpackConfig`, function describeCreateWebpackConfig() {
   describe(`webpackExternalsResolver`, function describeWebpackExternalsResolver() {
     it(`transform node built-in module`, async function it() {
       const result = await webpackExternalsResolver(context, `path`);
-      expect(result).toEqual(`path`);
+      expect(result).toEqual(`commonjs path`);
     });
 
     it(`transform local modules in node_modules`, async function it() {
       const result = await webpackExternalsResolver(context, `lodash/fp/map`);
-      expect(result).toInclude(`reacthtmlpack/node_modules/lodash/fp/map.js`);
+      expect(result).toEqual(`commonjs lodash/fp/map`);
     });
 
     it(`transform local modules with webpack loader syntax`, async function it() {
       const result = await webpackExternalsResolver(context, `css?module!lodash`);
-      expect(result).toInclude(`reacthtmlpack/node_modules/lodash/lodash.js`);
+      expect(result).toInclude(`commonjs lodash`);
     });
 
     it(`transform local modules with css-modules`, async function it() {
