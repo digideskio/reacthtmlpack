@@ -135,6 +135,17 @@ export function srcWithWorkspaceAddWatcher(__srcWithWorkspace__) {
     }));
 }
 
+function transformRelativePathForModule(moduleName, text, moduleExcludeList) {
+  const extname = extractExtname(moduleName);
+  switch (extname) {
+    case `.js`: return transformRelativePath(text, moduleExcludeList);
+    default: {
+      console.warn(`We can't transform ${ moduleName } at the moment.`);
+      return text;
+    }
+  }
+}
+
 export function srcWithWorkspaceToSource(__srcWithWorkspace__) {
   return __srcWithWorkspace__
     .selectMany(async function selectSource({
@@ -152,10 +163,17 @@ export function srcWithWorkspaceToSource(__srcWithWorkspace__) {
       const clientEntryList = extractClientEntryList($);
       const serverEntryList = extractServerEntryList($);
       const moduleList = extractModuleList($);
-      const moduleExcludeList = moduleList.map(({ moduleName }) =>
+      const moduleExcludeList = moduleList.map(({ moduleName }) => {
         // FIXME: normalize module resolution from path
-        moduleName.replace(extractExtname(moduleName), ``)
-      );
+        const extname = extractExtname(moduleName);
+        switch (extname) {
+          case `.js`: return moduleName.replace(extname, ``);
+          default: {
+            console.warn(`Use origin ${ moduleName } at the moment.`);
+            return moduleName;
+          }
+        }
+      });
       debugCore(moduleExcludeList);
 
       const {
@@ -203,7 +221,9 @@ export function srcWithWorkspaceToSource(__srcWithWorkspace__) {
       const moduleWriteFilePromiseList = moduleList.reduce((acc, { moduleName, text }) => {
         const clientFilepath = resolvePath(clientWorkspacePath, moduleName);
         const serverFilepath = resolvePath(serverWorkspacePath, moduleName);
-        const code = transformRelativePath(text, moduleExcludeList);
+        debugCore({ clientFilepath, serverFilepath });
+
+        const code = transformRelativePathForModule(moduleName, text, moduleExcludeList);
 
         return [
           ...acc,

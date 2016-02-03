@@ -44,6 +44,15 @@
         return store;
       };
     </script>
+    <style data-reacthtmlpack-module-name="./CoreLayout.css">
+      .container {
+        composes: container-fluid from "flexboxgrid";
+      }
+
+      .row {
+        composes: row from "flexboxgrid";
+      }
+    </style>
     <script data-reacthtmlpack-module-name="./CoreLayout.js">
       import {
         default as React,
@@ -53,6 +62,10 @@
       import {
         default as Helmet,
       } from "react-helmet";
+
+      import {
+        default as theme,
+      } from "./CoreLayout.css"
 
       export default function CoreLayout({ children }) {
         return (
@@ -68,8 +81,10 @@
                 { "property": `og:type`, "content": `article` },
               ]}
             />
-            <div className="view-container">
-              {children}
+            <div className={theme.container}>
+              <div className={theme.row}>
+                {children}
+              </div>
             </div>
           </div>
         );
