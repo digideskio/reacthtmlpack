@@ -1,3 +1,13 @@
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/tomchentw/reacthtmlpack/compare/v2.0.2...v2.1.0) (2016-02-03)
+
+
+### Features
+
+* **webpack:** enable css-modules by default ([20aa0a5](https://github.com/tomchentw/reacthtmlpack/commit/20aa0a5))
+
+
+
 <a name="2.0.2"></a>
 ## [2.0.2](https://github.com/tomchentw/reacthtmlpack/compare/v2.0.1...v2.0.2) (2016-02-02)
 
