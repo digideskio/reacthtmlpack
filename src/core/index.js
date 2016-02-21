@@ -196,7 +196,7 @@ export function srcWithWorkspaceToSource(__srcWithWorkspace__) {
             ],
           },
           clientWriteFilePromiseList: [
-            ...acc,
+            ...acc.clientWriteFilePromiseList,
             fs.writeFile(clientFilepath, code, `utf8`),
           ],
         };
@@ -217,7 +217,7 @@ export function srcWithWorkspaceToSource(__srcWithWorkspace__) {
             ],
           },
           serverWriteFilePromiseList: [
-            ...acc,
+            ...acc.serverWriteFilePromiseList,
             fs.writeFile(serverFilepath, code, `utf8`),
           ],
         };
@@ -313,7 +313,7 @@ function sourceToClientWebpackConfig(__source__) {
 function sourceToServerWebpackConfig(__source__) {
   return __source__
     .map(({ srcFile, customServerConfig }) =>
-      createServerWebpackConfig(customServerConfig)
+      console.log(customServerConfig) || createServerWebpackConfig(customServerConfig)
     );
 }
 
