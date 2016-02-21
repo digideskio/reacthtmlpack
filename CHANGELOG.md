@@ -1,3 +1,14 @@
+<a name="2.1.5"></a>
+## [2.1.5](https://github.com/tomchentw/reacthtmlpack/compare/v2.1.4...v2.1.5) (2016-02-21)
+
+
+### Bug Fixes
+
+* **core:** remove console.log ([d79de3b](https://github.com/tomchentw/reacthtmlpack/commit/d79de3b))
+* **webpack:** split out loader prefix before resolving externals ([756220a](https://github.com/tomchentw/reacthtmlpack/commit/756220a))
+
+
+
 <a name="2.1.4"></a>
 ## [2.1.4](https://github.com/tomchentw/reacthtmlpack/compare/v2.1.3...v2.1.4) (2016-02-21)
 

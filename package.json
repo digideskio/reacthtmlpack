@@ -1,6 +1,6 @@
 {
   "name": "reacthtmlpack",
-  "version": "2.1.4",
+  "version": "2.1.5",
   "description": "Added the missing piece of treating `index.html` as entry point in webpack bundles.",
   "main": "lib/index.js",
   "bin": {
