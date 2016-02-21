@@ -119,16 +119,9 @@ function requestToCommonJSModule(request: string): Object {
   // -!./../../node_modules/css-loader/index.js!flexboxgrid
   // flexboxgrid
   //
-  // sep as pathSep,
-  // const [potentialModuleName] = request.split(pathSep);
-  //
-  let moduleName: string = request;
-  if (request.match(/!/)) {
-    moduleName = _.last(request.split(`!`));
-  }
   try {
     // FIXME: Assume everything can be found in node_modules
-    const absPath = require.resolve(moduleName);
+    const absPath = require.resolve(request);
     if (CSS_REGEX.test(absPath)) {
       return { // Because we use css-modules by default
         isExternal: false,
@@ -141,12 +134,16 @@ function requestToCommonJSModule(request: string): Object {
   // Make it external.
   return {
     isExternal: true,
-    moduleName: `commonjs ${ moduleName }`,
+    moduleName: `commonjs ${ request }`,
   };
 }
 
-
-export function webpackExternalsResolver(context, request, done) {
+export function webpackExternalsResolver(context, requestWithLoaderStr, done) {
+  let request = requestWithLoaderStr;
+  if (/!/.test(requestWithLoaderStr)) {
+    // We don't care about loader prefix……
+    request = _.last(requestWithLoaderStr.split(`!`));
+  }
   // https://github.com/webpack/webpack/issues/839#issuecomment-76736465
   if (isAbsolutePath(request)) {
     done();
