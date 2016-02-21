@@ -1,3 +1,14 @@
+<a name="2.1.4"></a>
+## [2.1.4](https://github.com/tomchentw/reacthtmlpack/compare/v2.1.3...v2.1.4) (2016-02-21)
+
+
+### Bug Fixes
+
+* **core:** spread correct reducing array ([316de64](https://github.com/tomchentw/reacthtmlpack/commit/316de64))
+* **package.json:** move babel-plugin and debug to dependencies ([c05f6de](https://github.com/tomchentw/reacthtmlpack/commit/c05f6de))
+
+
+
 <a name="2.1.3"></a>
 ## [2.1.3](https://github.com/tomchentw/reacthtmlpack/compare/v2.1.2...v2.1.3) (2016-02-21)
 
