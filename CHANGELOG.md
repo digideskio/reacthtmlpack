@@ -1,3 +1,13 @@
+<a name="2.1.3"></a>
+## [2.1.3](https://github.com/tomchentw/reacthtmlpack/compare/v2.1.2...v2.1.3) (2016-02-21)
+
+
+### Bug Fixes
+
+* **core:** normalize srcFile to absolute path first ([6504002](https://github.com/tomchentw/reacthtmlpack/commit/6504002))
+
+
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/tomchentw/reacthtmlpack/compare/v2.1.1...v2.1.2) (2016-02-03)
 
