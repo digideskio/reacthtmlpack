@@ -3,6 +3,7 @@ import {
 } from "rx";
 
 import {
+  srcFileToAbsolutePath,
   srcFileToSrcWithWorkspace,
   srcWithWorkspaceToSource,
   sourceToWebpackMultiCompiler,
@@ -17,6 +18,7 @@ export default function build(
   __prerenderPropsList__: Observable,
 ): Observable {
   const __source__ = __srcFile__
+    .let(srcFileToAbsolutePath)
     .let(srcFileToSrcWithWorkspace)
     .let(srcWithWorkspaceToSource)
     .shareReplay();

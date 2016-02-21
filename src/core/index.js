@@ -105,6 +105,11 @@ async function copy(srcFS, src, dest) {// Weird bug. Can't accept arguments.leng
   await fs.writeFile(dest, await srcFS.readFile(src, encoding), encoding);
 }
 
+export function srcFileToAbsolutePath(__srcFile__) {
+  return __srcFile__
+    .map(srcFile => resolvePath(process.cwd(), srcFile));
+}
+
 export function srcFileToSrcWithWorkspace(__srcFile__) {
   return __srcFile__
     .selectMany(async function selectSrcFileWithWorkspacePath(srcFile: string) {
@@ -158,7 +163,7 @@ export function srcWithWorkspaceToSource(__srcWithWorkspace__) {
         clientWorkspacePath: !!clientWorkspacePath,
         serverWorkspacePath: !!serverWorkspacePath,
       });
-      const html = await fs.readFile(resolvePath(process.cwd(), srcFile), `utf8`);
+      const html = await fs.readFile(srcFile, `utf8`);
       const $ = cheerio.load(html);
       const clientEntryList = extractClientEntryList($);
       const serverEntryList = extractServerEntryList($);

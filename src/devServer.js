@@ -3,6 +3,7 @@ import {
 } from "rx";
 
 import {
+  srcFileToAbsolutePath,
   srcFileToSrcWithWorkspace,
   srcWithWorkspaceAddWatcher,
   srcWithWorkspaceToSource,
@@ -18,6 +19,7 @@ export default function devServer(
   __prerenderPropsList__: Observable
 ): Observable {
   const __source__ = __srcFile__
+    .let(srcFileToAbsolutePath)
     .let(srcFileToSrcWithWorkspace)
     .let(srcWithWorkspaceAddWatcher)
     .let(srcWithWorkspaceToSource)
