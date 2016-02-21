@@ -313,7 +313,7 @@ function sourceToClientWebpackConfig(__source__) {
 function sourceToServerWebpackConfig(__source__) {
   return __source__
     .map(({ srcFile, customServerConfig }) =>
-      console.log(customServerConfig) || createServerWebpackConfig(customServerConfig)
+      createServerWebpackConfig(customServerConfig)
     );
 }
 
