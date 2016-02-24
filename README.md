@@ -25,7 +25,7 @@ Take [an example](https://github.com/react-bootstrap/react-bootstrap/blob/v0.28.
 3. Click "Submit" and *wait ~20s*
 4. Voila! Play aroud with your demo component on the right area!
 
-![reacthtmlpack.tomchentw.com - demo](https://camo.githubusercontent.com/cfae1a34d39edaef79dba26fb7fdb0827ba5d59f/687474703a2f2f672e7265636f726469742e636f2f3550644d44396f5541412e676966)
+![reacthtmlpack.tomchentw.com - demo](https://camo.githubusercontent.com/9821d63e30e96737445c98bf83c55057958bb710/687474703a2f2f672e7265636f726469742e636f2f5a33364478626e76714b2e676966)
 
 
 ### Run it on your machine
