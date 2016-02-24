@@ -1,3 +1,9 @@
+<a name="2.1.6"></a>
+## [2.1.6](https://github.com/tomchentw/reacthtmlpack/compare/v2.1.5...v2.1.6) (2016-02-24)
+
+
+
+
 <a name="2.1.5"></a>
 ## [2.1.5](https://github.com/tomchentw/reacthtmlpack/compare/v2.1.4...v2.1.5) (2016-02-21)
 

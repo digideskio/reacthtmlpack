@@ -1,6 +1,6 @@
 {
   "name": "reacthtmlpack",
-  "version": "2.1.5",
+  "version": "2.1.6",
   "description": "Build a single HTML file into a full-featured, production-ready Single Page Application",
   "main": "lib/index.js",
   "bin": {
