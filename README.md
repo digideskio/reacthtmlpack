@@ -18,15 +18,17 @@ npm install reacthtmlpack@next --save
 Take [an example](https://github.com/react-bootstrap/react-bootstrap/blob/v0.28.3/docs/examples/AlertAutoDismissable.js) from `react-bootstrap`, you'll have two ways to try it:
 
 
-### Via online REPL
+### With online REPL
 
-1. Copy the contents of `index.html`
-2. Paste to the left area of the REPL: https://reacthtmlpack.tomchentw.com
-3. Click "Submit" and wait ~20s
+1. Copy the contents of [index.html](https://github.com/tomchentw/reacthtmlpack/blob/v2.1.6/examples/AlertAutoDismissable/index.html)
+2. Paste to the left area of the REPL ⇨⇨⇨ https://reacthtmlpack.tomchentw.com
+3. Click "Submit" and *wait ~20s*
 4. Voila! Play aroud with your demo component on the right area!
 
+![reacthtmlpack.tomchentw.com - demo](https://camo.githubusercontent.com/cfae1a34d39edaef79dba26fb7fdb0827ba5d59f/687474703a2f2f672e7265636f726469742e636f2f3550644d44396f5541412e676966)
 
-### Run it in your machine
+
+### Run it on your machine
 
 Save `index.html` and `package.json` into the same directory. You can find it under `examples/AlertAutoDismissable` directory. Then,
 
