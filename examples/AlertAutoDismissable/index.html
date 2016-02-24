@@ -1,0 +1,80 @@
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>AlertAutoDismissable | reacthtmlpack</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+
+    <script data-reacthtmlpack-module-name="./AlertAutoDismissable.js">
+      // Start coding your React here.
+      import {
+        default as React,
+      } from "react";
+
+      import {
+        Alert,
+        Button,
+      } from "react-bootstrap";
+
+      export default React.createClass({
+        displayName: `AlertAutoDismissable`,
+
+        getInitialState() {
+          return {
+            alertVisible: false
+          };
+        },
+
+        render() {
+          if (this.state.alertVisible) {
+            return (
+              <Alert bsStyle="danger" onDismiss={this.handleAlertDismiss} dismissAfter={2000}>
+                <h4>Oh snap! You got an error!</h4>
+                <p>But this will hide after 2 seconds.</p>
+              </Alert>
+            );
+          }
+
+          return (
+            <Button onClick={this.handleAlertShow}>Show Alert</Button>
+          );
+        },
+
+        handleAlertDismiss() {
+          this.setState({alertVisible: false});
+        },
+
+        handleAlertShow() {
+          this.setState({alertVisible: true});
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div id="react-container" data-reacthtmlpack-inject-props="server.innerHTML">
+      <!-- The innerHTML of this node will be the arguments passed to contentReady() -->
+      <!-- with key "innerHTML" under provide-props="server" -->
+    </div>
+
+    <script data-reacthtmlpack-module-name="./client.js" data-reacthtmlpack-entry-target="web">
+      import {
+        default as React,
+      } from "react";
+
+      import {
+        default as ReactDOM,
+      } from "react-dom";
+
+      import {
+        default as AlertAutoDismissable,
+      } from "./AlertAutoDismissable";
+
+      ReactDOM.render((
+        <AlertAutoDismissable />
+      ), document.getElementById(`react-container`));
+    </script>
+  </body>
+</html>
