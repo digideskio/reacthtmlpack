@@ -43,7 +43,7 @@ export default function createJoinStats(stats) {
 
     getPublicPathByChunkName(chunkName, extname) {
       const assetName = getMatchedAssetName(jsonStats, chunkName, extname);
-      return `${ jsonStats.publicPath }${ assetName }`;
+      return `${jsonStats.publicPath}${assetName}`;
     },
   };
 }

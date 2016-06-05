@@ -134,7 +134,7 @@ function requestToCommonJSModule(request: string): Object {
   // Make it external.
   return {
     isExternal: true,
-    moduleName: `commonjs ${ request }`,
+    moduleName: `commonjs ${request}`,
   };
 }
 

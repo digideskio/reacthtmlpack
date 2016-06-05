@@ -42,7 +42,7 @@ export function processModule($) {
   return (index, element) => {
     const $entry = $(element);
     const moduleName = $entry.attr(MODULE_NAME);
-    invariant(moduleName, `You must provide a valid value to ${ MODULE_NAME }`);
+    invariant(moduleName, `You must provide a valid value to ${MODULE_NAME}`);
 
     return {
       moduleName,
@@ -54,8 +54,8 @@ export function processModule($) {
 }
 
 const ENTRY_TARGET = `data-reacthtmlpack-entry-target`;
-const ENTRY_TARGET__WEB__SELECTOR = `[${ ENTRY_TARGET }="web"]`;
-const ENTRY_TARGET__NODE__SELECTOR = `[${ ENTRY_TARGET }="node"]`;
+const ENTRY_TARGET__WEB__SELECTOR = `[${ENTRY_TARGET}="web"]`;
+const ENTRY_TARGET__NODE__SELECTOR = `[${ENTRY_TARGET}="node"]`;
 
 export function extractClientEntryList($) {
   return $(ENTRY_TARGET__WEB__SELECTOR)
@@ -70,8 +70,8 @@ export function extractServerEntryList($) {
 }
 
 export function extractModuleList($) {
-  return $(`[${ MODULE_NAME }]`)
-    .not(`[${ ENTRY_TARGET }]`)
+  return $(`[${MODULE_NAME}]`)
+    .not(`[${ENTRY_TARGET}]`)
     .map(processModule($))
     .toArray();
 }
@@ -90,7 +90,7 @@ export async function renderServerEntryList(prerenderProps, serverEntryList, ser
     });
 
     const injectProps = await thenify(server)(prerenderProps);
-    debugElementProcessor(`Provide ${ providePropsName } with `, {
+    debugElementProcessor(`Provide ${providePropsName} with `, {
       chunkName: !!chunkName,
       injectProps: !!injectProps,
     });
@@ -111,7 +111,7 @@ const INJECT_PROPS = `data-reacthtmlpack-inject-props`;
 const INJECT_METHOD = `data-reacthtmlpack-inject-method`;
 
 export function alterInjectEntryList($, injectPropsByProvideName) {
-  $(`[${ INJECT_PROPS }]`)
+  $(`[${INJECT_PROPS}]`)
     .each((index, element) => {
       const $entry = $(element);
       const objectPath = $entry.attr(INJECT_PROPS);
@@ -188,16 +188,16 @@ export function alterClientEntryList($, clientJoinStats) {
     .each((index, element) => alterElement(element));
 
   if (process.env.NODE_ENV === `production`) {
-    $(`[${ EXTRACT_TEXT_FROM_MODULE_NAME }]`)
+    $(`[${EXTRACT_TEXT_FROM_MODULE_NAME}]`)
       .each((index, element) => alterElement(element));
   } else {
-    $(`[${ EXTRACT_TEXT_FROM_MODULE_NAME }]`)
+    $(`[${EXTRACT_TEXT_FROM_MODULE_NAME}]`)
       .remove();
   }
 }
 
 export function alterModuleEntryList($) {
-  $(`[${ MODULE_NAME }]`)
+  $(`[${MODULE_NAME}]`)
     .each((index, element) => {
       const $entry = $(element);
 

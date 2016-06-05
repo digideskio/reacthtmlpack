@@ -94,7 +94,7 @@ const debugCore = nodeDebug(`reacthtmlpack:core`);
 
 const mkdirp = thenify(nodeMkdirp);
 
-async function copy(srcFS, src, dest) {// Weird bug. Can't accept arguments.length > 3
+async function copy(srcFS, src, dest) { // Weird bug. Can't accept arguments.length > 3
   const encoding = `utf8`;
   debugCore(`srcFS.readFile`, !!srcFS.readFile);
   debugCore(`args`, {
@@ -145,7 +145,7 @@ function transformRelativePathForModule(moduleName, text, moduleExcludeList) {
   switch (extname) {
     case `.js`: return transformRelativePath(text, moduleExcludeList);
     default: {
-      console.warn(`We can't transform ${ moduleName } at the moment.`);
+      console.warn(`We can't transform ${moduleName} at the moment.`);
       return text;
     }
   }
@@ -174,7 +174,7 @@ export function srcWithWorkspaceToSource(__srcWithWorkspace__) {
         switch (extname) {
           case `.js`: return moduleName.replace(extname, ``);
           default: {
-            console.warn(`Use origin ${ moduleName } at the moment.`);
+            console.warn(`Use origin ${moduleName} at the moment.`);
             return moduleName;
           }
         }
@@ -417,7 +417,7 @@ export function watchWebpackMultiCompilerWithConnectAppToMultiStats(__webpackMul
         // We only pass in webpackClientCompiler to middlewares
         // so that the publicPath will be correct
         app.use(webpackDevMiddleware(webpackClientCompiler, {
-          publicPath: `/${ clientWebpackConfig.output.publicPath }`,
+          publicPath: `/${clientWebpackConfig.output.publicPath}`,
           noInfo: true,
           quiet: true,
         }));
@@ -487,9 +487,9 @@ export function joinStatsWithArgumentListToFinalBundle(__joinStatsWithArgList__)
 
           let destFile = prerenderProps.location;
           if (destFile.match(/\/$/)) {
-            destFile = `${ destFile }index`;
+            destFile = `${destFile}index`;
           }
-          destFile = `${ destFile }${ srcExtname }`;
+          destFile = `${destFile}${srcExtname}`;
 
           return {
             destFile,
@@ -541,10 +541,11 @@ export function finalBundleToOutputSideEffect(__finalBundle__) {
           resolvePath(outDirWithPublicPath, name),
         )),
         ...htmlFileList.map(async function htmlFileWithMkdirp({ destFile, html }) {
-          const filename = resolvePath(outDir, `.${ destFile }`);
+          const filename = resolvePath(outDir, `.${destFile}`);
           const dirname = extractDirname(filename);
           await mkdirp(dirname);
           await fs.writeFile(filename, html, `utf8`);
+          return true;
         }),
       ]);
 
