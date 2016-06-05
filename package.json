@@ -23,7 +23,9 @@
     "test:cov": "babel-node ./node_modules/.bin/isparta cover --report lcov _mocha -- $npm_package_config_mocha",
     "test:watch": "npm test -- --watch",
     "test:fixtures": "cross-env UPDATE_TEST_FIXTURES=true npm test",
-    "test": "cross-env DEBUG=reacthtmlpack:* NODE_ENV=test BABEL_ENV=test mocha $npm_package_config_mocha"
+    "test": "cross-env DEBUG=reacthtmlpack:* NODE_ENV=test BABEL_ENV=test mocha $npm_package_config_mocha",
+    "prerelease": "npm run build && git add -A && git commit -m 'chore(lib): compile from src using babel'",
+    "release": "standard-version"
   },
   "config": {
     "mocha": "--compilers js:babel-register ./src/**/__tests__/*.spec.js"
